@@ -26,8 +26,9 @@ namespace LinkSnaffler
                     error = false;
                     var parse = new Parse(uri);
                     var links = parse.Uri(uri);
+                    var sortedLinks = links.OrderByDescending(l => l.Seen).ThenByDescending(l => l.Variants);
                     Console.WriteLine("Saving report to disk");
-                    var doc = new XDocument(new XElement("Links", from l in links 
+                    var doc = new XDocument(new XElement("Links", from l in sortedLinks 
                                                                       select new XElement("Link",
                                                                           new XAttribute("Url", l.Link.ToString()),
                                                                           new XAttribute("Seen", l.Seen),

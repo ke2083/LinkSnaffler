@@ -58,7 +58,7 @@ namespace LinkSnaffler
                 var foundLink = links.FirstOrDefault(l => l.Link.AbsolutePath.ToString() == link.AbsolutePath.ToString());
                 if (foundLink == null)
                 {
-                    foundLink = new LinkInformation { Link = link, LinkedFrom = parent, Status = status };
+                    foundLink = new LinkInformation { Link = link, LinkedFrom = parent, Status = status, Seen = 1 };
                     links.Add(foundLink);
                 }
                 else
